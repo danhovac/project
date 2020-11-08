@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer</title>
+    <script>
+        $(document).ready(function () {
+                let areas = ["강남구", "강동구","강북구","강성구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구",
+                "동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구",
+                "중구","중랑"];
+                for (let i=0; i < areas.length; i++) {
+                    $("#inputGroupSelect01").append(`<option value=${areas[i]}>${areas[i]}</option>`);
+                }
+            });
+    </script>
+</head>
+<body>
+ <h1> 지금 전원 가능한 병 어디? </h1>
+ <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">지역</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+
+  </select>
+</div>
+</body>
+</html>
