@@ -32,6 +32,7 @@
         </style>
         <script>
         $(document).ready(function () {
+
             let areas = ["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구",
                 "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구",
                 "중구", "중랑"];
@@ -42,6 +43,7 @@
 
         function emptyBed() {
             $('#inputGroupSelect02').empty();
+
             console.log($('#inputGroupSelect01').val());
             let selectedRegion = $('#inputGroupSelect01').val();
             $.ajax({
@@ -61,10 +63,21 @@
             });
         };
 
-        function showHospitalName(hospitalName) {
-            $("#inputGroupSelect02").append(`<option value=${hospitalName}>${hospitalName}</option>`)
-        }
+        // function showHospitalName(hospitalName) {
+        //     $("#inputGroupSelect02").append(`<option value=${hospitalName}>${hospitalName}</option>`)
+        // }
+
+         function showHospitalName(bed) {
+             console.log("bed", bed);
+                let tempHtml = `<tr>
+                        <td>${bed.hospitalName}</td>
+                        <td>${bed.ER}</td>
+                        <td>${bed.dutycall}</td>
+                    </tr>`;
+                $("#inputGroupSelect02").append(tempHtml);
+            };
          </script>
+
     </head>
     <body>
      <h1> 지금 전원 가능한 병원 </h1>
@@ -78,8 +91,19 @@
         </select>
 
         <button type="button" onclick="emptyBed()" class="btn btn-lg btn-primary">Primary button</button>
-        <div id="inputGroupSelect02">
+        <div class="beds">
+                <table class="table">
+                     <thead id="inputGroupSelect03">
+                    <tr>
+                        <th scope="col">병원 </th>
+                        <th scope="col">빈자리 </th>
+                        <th scope="col">전화번호 </th>
+                    </tr>
+                    </thead>
+                    <thead id="inputGroupSelect02">
+                    </thead>
 
-        </div>
+                </table>
+            </div>
     </body>
 </html>

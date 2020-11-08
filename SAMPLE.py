@@ -42,12 +42,13 @@ def empty_beds():
     root = ET.fromstring(r.text)
     data = []
     for item in root.find('body').find('items'):
-        # dict_data = {
-        #     'hvec': item.find('hvec').text,
-        #     'hospital_name': item.find('dutyName').text
-        # }
-        data.append(item.find('dutyName').text)
-    # print(data)
+        data.append({
+            'ER': item.find('hvec').text,
+            'hospitalName': item.find('dutyName').text,
+            'dutycall': item.find('dutyTel3').text
+        })
+        # data.append()
+    print(data)
     return jsonify({'result': 'success', 'beds_list': data})
 
 if __name__ == '__main__':
